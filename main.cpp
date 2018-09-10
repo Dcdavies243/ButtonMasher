@@ -25,10 +25,34 @@ int main()
 		gameWindow.getSize().y / 2 - buttonTexture.getSize().y / 2
 	);
 
+	//Create Font
+	sf::Font gameFont;
+	gameFont.loadFromFile("fonts/mainfont.ttf");
+	
+	//Create Title
+	sf::Text titleText;
+	titleText.setFont(gameFont);
+	titleText.setString("Button Masher!");
+	titleText.setCharacterSize(75);
+	titleText.setFillColor(sf::Color::Red);
+	titleText.setStyle(sf::Text::Bold | sf::Text::Italic);
+	titleText.setPosition(gameWindow.getSize().x / 2 - titleText.getLocalBounds().width / 2, 30);
+
+	// Create Author Text
+	sf::Text authorText;
+	authorText.setFont(gameFont);
+	authorText.setString("By Donald Davies");
+	authorText.setCharacterSize(75);
+	authorText.setFillColor(sf::Color::Red);
+	authorText.setStyle(sf::Text::Bold | sf::Text::Italic);
+	authorText.setPosition(gameWindow.getSize().x / 2 - authorText.getLocalBounds().width / 2, 120);
+
+
 	//Create Music
 	sf::Music gameMusic;
 	gameMusic.openFromFile("audio/music.ogg");
 	//gameMusic.play();
+
 
 	//--------------------------------------------
 	// Game Loop
@@ -57,6 +81,8 @@ int main()
 
 		//Draw Everything
 		gameWindow.draw(buttonSprite);
+		gameWindow.draw(titleText);
+		gameWindow.draw(authorText);
 
 		gameWindow.display();
 	}
